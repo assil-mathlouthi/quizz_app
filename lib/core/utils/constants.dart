@@ -1,47 +1,48 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:quizz_app/core/utils/assets.dart';
 import '../models/quizz_category_model.dart';
 
 final List<QuizzCategoryModel> kCategories = [
   QuizzCategoryModel(
     title: 'General Knowledge',
-    description: 'Dive into the digital world',
-    image: 'assets/images/technology.png',
+    description: 'Test your broad knowledge across various topics',
+    image: Assets.imagesTablerBrain,
     categoryId: 6,
-    color: Colors.teal,
+    color: Color(0xFF6A1B9A),
   ),
   QuizzCategoryModel(
     title: 'Science',
-    description: 'Test your knowledge of the natural world',
-    image: 'assets/images/science.png',
+    description: 'Explore biology, chemistry, physics and natural wonders',
+    image: Assets.imagesScience,
     categoryId: 1,
-    color: Colors.blue,
+    color: Color(0xFF2196F3),
   ),
   QuizzCategoryModel(
     title: 'History',
-    description: 'Journey through time and historical events',
-    image: 'assets/images/history.png',
+    description: 'Discover ancient civilizations and historical milestones',
+    image: Assets.imagesHistory,
     categoryId: 2,
-    color: Colors.orange,
+    color: Color(0xFFFF6F00),
   ),
   QuizzCategoryModel(
     title: 'Geography',
-    description: 'Explore the world and its wonders',
-    image: 'assets/images/geography.png',
+    description: 'Master countries, capitals and world landmarks',
+    image: Assets.imagesGeography,
     categoryId: 3,
-    color: Colors.green,
+    color: Color(0xFF388E3C),
   ),
   QuizzCategoryModel(
     title: 'Sports',
-    description: 'Challenge yourself with sports trivia',
-    image: 'assets/images/sports.png',
+    description: 'Challenge yourself with athletes, teams and sporting events',
+    image: Assets.imagesSports,
     categoryId: 4,
-    color: Colors.red,
+    color: Color(0xFFD32F2F),
   ),
   QuizzCategoryModel(
     title: 'Animals',
-    description: 'Test your cinema knowledge',
-    image: 'assets/images/movies.png',
+    description: 'Learn about wildlife, species and the animal kingdom',
+    image: Assets.imagesAnimals,
     categoryId: 5,
-    color: Colors.purple,
+    color: Color(0xFF7B1FA2),
   ),
 ];
