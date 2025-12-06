@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:quizz_app/core/utils/app_router.dart';
+import 'package:quizz_app/core/utils/app_theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +12,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.light,
+      getPages: AppRouter.getViews(),
     );
   }
 }
