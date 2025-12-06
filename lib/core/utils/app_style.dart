@@ -30,6 +30,14 @@ abstract class AppStyles {
       fontSize: getResponsiveFontSize(context, fontSize: 14),
     );
   }
+
+  static TextStyle fontBold14(BuildContext context) {
+    return TextStyle(
+      color: Theme.of(context).colorScheme.onPrimary,
+      fontWeight: FontWeight.bold,
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+    );
+  }
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {

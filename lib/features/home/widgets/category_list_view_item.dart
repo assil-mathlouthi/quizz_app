@@ -3,6 +3,7 @@ import 'package:quizz_app/core/extension/color_scheme_shorthand.dart';
 import 'package:quizz_app/core/models/quizz_category_model.dart';
 import 'package:quizz_app/core/utils/app_style.dart';
 import 'package:quizz_app/features/home/widgets/category_logo.dart';
+import 'package:quizz_app/features/home/widgets/custom_button.dart';
 
 class CategoryListViewItem extends StatelessWidget {
   const CategoryListViewItem({super.key, required this.model});
@@ -25,6 +26,16 @@ class CategoryListViewItem extends StatelessWidget {
                 Text(
                   model.description,
                   style: AppStyles.fontRegular14(context),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "10 questions",
+                      style: AppStyles.fontRegular14(context),
+                    ),
+                    CustomButton(),
+                  ],
                 ),
               ],
             ),
