@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:quizz_app/core/error/failure.dart';
@@ -16,7 +18,8 @@ class QuizService implements QuizRepo {
     required int id,
   }) async {
     try {
-      final endPoint = '?amount=10&category=$id';
+      final endPoint = '?amount=10&category=$id&type=multiple';
+      log(endPoint);
       final response = await _apiServices.get(endPoint: endPoint);
 
       final quizResponse = QuizResponseModel.fromJson(response);

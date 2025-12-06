@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quizz_app/core/bindings/app_binding.dart';
 import 'package:quizz_app/core/utils/app_router.dart';
 import 'package:quizz_app/core/utils/app_theme.dart';
 
@@ -17,6 +18,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       getPages: AppRouter.getViews(),
+      initialBinding: AppBindings(),
     );
   }
 }

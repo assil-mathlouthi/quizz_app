@@ -1,4 +1,3 @@
-
 import 'package:quizz_app/core/enums/quizz_difficulty.dart';
 
 class QuizModel {
@@ -67,5 +66,11 @@ class QuizModel {
         .replaceAll('&lt;', '<')
         .replaceAll('&gt;', '>');
   }
-}
 
+  @override
+  String toString() {
+    return 'QuizModel(type: $type, difficulty: ${difficulty.name}, category: $category, '
+        'question: $question, correctAnswer: $correctAnswer, '
+        'incorrectAnswers: $incorrectAnswers)';
+  }
+}

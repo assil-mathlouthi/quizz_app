@@ -5,7 +5,6 @@ import 'package:quizz_app/core/interface/quiz_repo.dart';
 import 'package:quizz_app/features/quizz/models/quiz_model.dart';
 
 class QuizController extends GetxController {
-
   QuizController({required this.quizService});
   final QuizRepo quizService;
 
@@ -14,8 +13,6 @@ class QuizController extends GetxController {
   final RxInt currentQuestionIndex = 0.obs;
   final RxInt score = 0.obs;
   final RxBool isLoading = false.obs;
-
-
 
   // start the quiz
   Future<void> startQuiz({required int categoryId}) async {
@@ -34,7 +31,7 @@ class QuizController extends GetxController {
         },
         (quizList) {
           questions.value = quizList;
-
+          log(questions.first.toString());
           isLoading.value = false;
         },
       );
