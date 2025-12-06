@@ -57,6 +57,18 @@ class QuizController extends GetxController {
   bool isOptionCorrect({required String option}) =>
       option == currentQuizz.correctAnswer;
 
+  void resetQuiz() {
+    currentQuestionIndex.value = 0;
+    score.value = 0;
+    showAnswer.value = false;
+    choosedOption.value = "";
+    if (questions.isNotEmpty) {
+      currentOptions.value = getCurrentOptions();
+    }
+    Get.back();
+  }
+
+
   void validateQuestion() {
     if (questions.isEmpty) return;
     showAnswer.value = true;

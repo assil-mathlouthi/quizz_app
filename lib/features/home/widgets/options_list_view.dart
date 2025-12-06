@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +13,6 @@ class OptionsListView extends GetView<QuizController> {
 
   @override
   Widget build(BuildContext context) {
-    
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       itemCount: controller.currentOptions.length,
@@ -25,6 +25,8 @@ class OptionsListView extends GetView<QuizController> {
             }
           },
           child: Obx(() {
+            log("correct:");
+            log(controller.currentQuizz.correctAnswer);
             final option = controller.currentOptions[index];
             if (controller.showAnswer.value) {
               if (option == controller.choosedOption.value ||

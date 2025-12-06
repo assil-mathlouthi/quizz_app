@@ -76,7 +76,7 @@ class ResultViewBody extends GetView<QuizController> {
                 Expanded(
                   child: CustomButton(
                     onPressed: () {
-                      Get.back();
+                      controller.resetQuiz();
                     },
                     text: "Reset",
                   ),
@@ -90,7 +90,8 @@ class ResultViewBody extends GetView<QuizController> {
                   child: CustomButton(
                     reverse: true,
                     onPressed: () {
-                      Get.offNamed(AppRouter.homeView);
+                      // controller.clearQuiz();
+                      Get.offAllNamed(AppRouter.homeView);
                     },
                     text: "Go Home",
                   ),
