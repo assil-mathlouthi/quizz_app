@@ -4,6 +4,7 @@ import 'package:quizz_app/core/extension/gap_shorthand.dart';
 import 'package:quizz_app/core/models/quizz_category_model.dart';
 import 'package:quizz_app/core/utils/app_style.dart';
 import 'package:quizz_app/features/home/widgets/category_logo.dart';
+import 'package:quizz_app/features/home/widgets/custom_linear_progess_indicator.dart';
 import 'package:quizz_app/features/home/widgets/question_section.dart';
 import 'package:quizz_app/features/quizz/controllers/quiz_controller.dart';
 
@@ -28,6 +29,8 @@ class QuizViewBody extends GetView<QuizController> {
           10.h,
           Text(category.title, style: AppStyles.fontMedium18(context)),
           60.h,
+          CustomLinearProgressInidicator(),
+          20.h,
           Obx(() {
             if (controller.isLoading.value) return CircularProgressIndicator();
             return QuestionSection(quizModel: controller.currentQuizz);
