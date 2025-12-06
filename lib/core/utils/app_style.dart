@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 abstract class AppStyles {
-  static TextStyle fontBold24(BuildContext context) {
+  static TextStyle fontBold32(BuildContext context) {
     return TextStyle(
       color: Theme.of(context).colorScheme.primary,
       fontWeight: FontWeight.bold,
       fontSize: getResponsiveFontSize(context, fontSize: 32),
+    );
+  }
+
+  static TextStyle fontRegular20(BuildContext context) {
+    return TextStyle(
+      color: Theme.of(context).colorScheme.secondary,
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
     );
   }
 }

@@ -9,7 +9,13 @@ class HomeViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
-        children: [Text("Quizz App", style: AppStyles.fontBold24(context))],
+        children: [
+          Text("Quizz App", style: AppStyles.fontBold32(context)),
+          Text(
+            "Choose quizz to get started",
+            style: AppStyles.fontRegular20(context),
+          ),
+        ],
       ),
     );
   }
