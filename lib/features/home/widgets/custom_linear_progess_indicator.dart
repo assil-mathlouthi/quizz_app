@@ -29,7 +29,7 @@ class CustomLinearProgressInidicator extends GetView<QuizController> {
         LinearProgressIndicator(
           borderRadius: BorderRadius.circular(12),
           minHeight: 8,
-          value: controller.currentQuestionIndex.value * .1,
+          value: (controller.currentQuestionIndex.value + 1) * .1,
           backgroundColor: context.colors.onSurface,
           valueColor: AlwaysStoppedAnimation(context.colors.primary),
         ),

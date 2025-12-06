@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:quizz_app/core/interface/quiz_repo.dart';
+import 'package:quizz_app/core/utils/app_router.dart';
 import 'package:quizz_app/features/quizz/models/quiz_model.dart';
 
 class QuizController extends GetxController {
@@ -42,7 +43,10 @@ class QuizController extends GetxController {
 
   void goToNext() {
     if (questions.isEmpty) return;
-    if (currentQuestionIndex.value >= questions.length - 1) return;
+    if (currentQuestionIndex.value >= questions.length - 1) {
+      Get.toNamed(AppRouter.resultView);
+      return;
+    }
 
     showAnswer.value = false;
     choosedOption.value = "";
