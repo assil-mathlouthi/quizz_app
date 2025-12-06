@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:quizz_app/core/utils/app_router.dart';
 import 'package:quizz_app/core/utils/app_theme.dart';
 
+
 void main() {
   runApp(const MainApp());
 }
