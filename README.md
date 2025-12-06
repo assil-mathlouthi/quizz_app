@@ -59,6 +59,14 @@ flutter build ios --release
 3. Submit answers; progress and score tracked in `QuizController`.
 4. On completion, Result screen shows trophy, score `x/total`, stars, and actions to reset or go home.
 
+## Screenshots
+
+Images live in `assets/screenshots/`:
+
+| Home                                 | Quiz                                 | Results                                    |
+| ------------------------------------ | ------------------------------------ | ------------------------------------------ |
+| ![Home](assets/screenshots/home.png) | ![Quiz](assets/screenshots/quiz.png) | ![Results](assets/screenshots/results.png) |
+
 ## Notes
 
 - Update `assets/images/` then re-run `flutter pub run flutter_assets` to refresh `assets.dart`.
