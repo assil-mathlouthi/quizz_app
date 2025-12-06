@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quizz_app/features/home/widgets/correct_wrong_option_list_item.dart';
 import 'package:quizz_app/features/home/widgets/option_list_item.dart';
 import 'package:quizz_app/features/quizz/controllers/quiz_controller.dart';
 import 'package:quizz_app/features/quizz/models/quiz_model.dart';
@@ -25,15 +28,23 @@ class OptionsListView extends GetView<QuizController> {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            controller.chooseOption(option: options[index]);
+            if (controller.showAnswer.isFalse) {
+              controller.chooseOption(option: options[index]);
+            }
           },
           child: Obx(() {
             final option = options[index];
             if (controller.showAnswer.value) {
-              return OptionsListItem(
-                option: option,
-                isSelected: controller.choosedOption.value == option,
-              );
+              if (option == controller.choosedOption.value ||
+                  option == controller.currentQuizz.correctAnswer) {
+                log(option);
+                return CorrectWrongOptionListItem(
+                  option: option,
+                  isCorrect: controller.isOptionCorrect(option: option),
+                );
+              } else {
+                return OptionsListItem(option: option, isSelected: false);
+              }
             }
             return OptionsListItem(
               option: option,

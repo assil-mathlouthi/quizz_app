@@ -25,14 +25,21 @@ class QuizController extends GetxController {
 
   void goToNext() {
     showAnswer.value = false;
+    choosedOption.value = "";
+    currentQuestionIndex.value++;
+    if (currentQuestionIndex.value == 10) {
+      
+    }
   }
+
+  bool isOptionCorrect({required String option}) =>
+      option == currentQuizz.correctAnswer;
 
   void validateQuestion() {
     showAnswer.value = true;
     if (choosedOption.value == currentQuizz.correctAnswer) {
       score.value++;
     }
-    choosedOption.value = "";
   }
 
   // start the quiz

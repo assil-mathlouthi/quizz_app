@@ -29,7 +29,10 @@ class CorrectWrongOptionListItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(option, style: AppStyles.fontRegular14(context)),
-          Icon(isCorrect ? Icons.check_circle_outline : Icons.cancel_outlined),
+          Icon(
+            isCorrect ? Icons.check_circle_outline : Icons.cancel_outlined,
+            color: isCorrect ? const Color(0xff00c951) : Color(0xfffb2c36),
+          ),
         ],
       ),
     );
