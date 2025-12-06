@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizz_app/core/utils/app_style.dart';
+import 'package:quizz_app/features/home/widgets/categoies_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -15,6 +16,7 @@ class HomeViewBody extends StatelessWidget {
             "Choose quizz to get started",
             style: AppStyles.fontRegular20(context),
           ),
+          CategoiesListView(),
         ],
       ),
     );
