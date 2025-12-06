@@ -34,7 +34,7 @@ class CategoryListViewItem extends StatelessWidget {
                       "10 questions",
                       style: AppStyles.fontRegular14(context),
                     ),
-                    CustomButton(),
+                    CustomButton(categoryId: model.categoryId),
                   ],
                 ),
               ],
