@@ -1,7 +1,5 @@
-
-
-
 import 'package:flutter/material.dart';
+import 'package:quizz_app/core/utils/app_style.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -11,9 +9,7 @@ class HomeViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
-        children: [
-          Text("Quizz App")
-        ],
+        children: [Text("Quizz App", style: AppStyles.fontBold24(context))],
       ),
     );
   }

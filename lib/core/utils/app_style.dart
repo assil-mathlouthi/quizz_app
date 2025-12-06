@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 abstract class AppStyles {
-  static TextStyle odibeeSans42(BuildContext context) {
+  static TextStyle fontBold24(BuildContext context) {
     return TextStyle(
       color: Theme.of(context).colorScheme.primary,
-      fontSize: getResponsiveFontSize(context, fontSize: 24),
+      fontWeight: FontWeight.bold,
+      fontSize: getResponsiveFontSize(context, fontSize: 32),
     );
   }
-
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
