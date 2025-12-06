@@ -2,11 +2,12 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:quizz_app/core/interface/quiz_repo.dart';
-import 'package:quizz_app/core/services/quiz_service.dart';
 import 'package:quizz_app/features/quizz/models/quiz_model.dart';
 
 class QuizController extends GetxController {
-  final QuizRepo _quizRepo = QuizService();
+
+  QuizController({required this.quizService});
+  final QuizRepo quizService;
 
   // Observable state
   final RxList<QuizModel> questions = <QuizModel>[].obs;
@@ -24,7 +25,7 @@ class QuizController extends GetxController {
     questions.clear();
 
     try {
-      final result = await _quizRepo.fetchQuizByCategoryId(id: categoryId);
+      final result = await quizService.fetchQuizByCategoryId(id: categoryId);
 
       result.fold(
         (failure) {
