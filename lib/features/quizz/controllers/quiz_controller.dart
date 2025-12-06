@@ -7,6 +7,7 @@ import 'package:quizz_app/features/quizz/models/quiz_model.dart';
 class QuizController extends GetxController {
   QuizController({required this.quizService});
   final QuizRepo quizService;
+  int? _currentCategoryId;
 
   // Observable state
   final RxList<QuizModel> questions = <QuizModel>[].obs;
@@ -14,6 +15,8 @@ class QuizController extends GetxController {
   final RxInt score = 0.obs;
   final RxBool isLoading = false.obs;
   final RxBool showAnswer = false.obs;
+
+  final RxList<String> currentOptions = <String>[].obs;
 
   final RxString choosedOption = "".obs;
 
@@ -23,19 +26,35 @@ class QuizController extends GetxController {
     choosedOption.value = option;
   }
 
+  List<String> getCurrentOptions() {
+    if (questions.isEmpty) return [];
+
+    /// just shuffle the order of optoins each time
+    /// I know there are more better to do it but it's just test
+    /// so I try to finish as soon as possible
+    List<String> options = [
+      currentQuizz.correctAnswer,
+      ...currentQuizz.incorrectAnswers,
+    ];
+    options.shuffle();
+    return options;
+  }
+
   void goToNext() {
+    if (questions.isEmpty) return;
+    if (currentQuestionIndex.value >= questions.length - 1) return;
+
     showAnswer.value = false;
     choosedOption.value = "";
     currentQuestionIndex.value++;
-    if (currentQuestionIndex.value == 10) {
-      
-    }
+    currentOptions.value = getCurrentOptions();
   }
 
   bool isOptionCorrect({required String option}) =>
       option == currentQuizz.correctAnswer;
 
   void validateQuestion() {
+    if (questions.isEmpty) return;
     showAnswer.value = true;
     if (choosedOption.value == currentQuizz.correctAnswer) {
       score.value++;
@@ -44,10 +63,16 @@ class QuizController extends GetxController {
 
   // start the quiz
   Future<void> startQuiz({required int categoryId}) async {
+    if (_currentCategoryId == categoryId && questions.isNotEmpty) return;
+    if (isLoading.value) return;
+    _currentCategoryId = categoryId;
     isLoading.value = true;
     currentQuestionIndex.value = 0;
     score.value = 0;
+    showAnswer.value = false;
+    choosedOption.value = "";
     questions.clear();
+    currentOptions.clear();
 
     try {
       final result = await quizService.fetchQuizByCategoryId(id: categoryId);
@@ -59,7 +84,12 @@ class QuizController extends GetxController {
         },
         (quizList) {
           questions.value = quizList;
-          log(questions.first.toString());
+          if (questions.isNotEmpty) {
+            currentOptions.value = getCurrentOptions();
+          }
+          if (questions.isNotEmpty) {
+            log(questions.first.toString());
+          }
           isLoading.value = false;
         },
       );

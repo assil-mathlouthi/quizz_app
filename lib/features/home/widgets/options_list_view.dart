@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,31 +12,23 @@ class OptionsListView extends GetView<QuizController> {
 
   @override
   Widget build(BuildContext context) {
-    /// just shuffle the order of optoins each time
-    /// I know there are more better to do it but it's just test
-    /// so I try to finish as soon as possible
-    List<String> options = [
-      quizModel.correctAnswer,
-      ...quizModel.incorrectAnswers,
-    ];
-    options.shuffle();
+    
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: options.length,
+      itemCount: controller.currentOptions.length,
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
             if (controller.showAnswer.isFalse) {
-              controller.chooseOption(option: options[index]);
+              controller.chooseOption(option: controller.currentOptions[index]);
             }
           },
           child: Obx(() {
-            final option = options[index];
+            final option = controller.currentOptions[index];
             if (controller.showAnswer.value) {
               if (option == controller.choosedOption.value ||
                   option == controller.currentQuizz.correctAnswer) {
-                log(option);
                 return CorrectWrongOptionListItem(
                   option: option,
                   isCorrect: controller.isOptionCorrect(option: option),
