@@ -13,10 +13,27 @@ class QuizController extends GetxController {
   final RxInt currentQuestionIndex = 0.obs;
   final RxInt score = 0.obs;
   final RxBool isLoading = false.obs;
+  final RxBool showAnswer = false.obs;
 
-
+  final RxString choosedOption = "".obs;
 
   QuizModel get currentQuizz => questions[currentQuestionIndex.value];
+
+  void chooseOption({required String option}) {
+    choosedOption.value = option;
+  }
+
+  void goToNext() {
+    showAnswer.value = false;
+  }
+
+  void validateQuestion() {
+    showAnswer.value = true;
+    if (choosedOption.value == currentQuizz.correctAnswer) {
+      score.value++;
+    }
+    choosedOption.value = "";
+  }
 
   // start the quiz
   Future<void> startQuiz({required int categoryId}) async {

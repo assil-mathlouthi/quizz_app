@@ -41,7 +41,19 @@ class QuizViewBody extends GetView<QuizController> {
             Row(
               children: [
                 Expanded(
-                  child: CustomButton(onPressed: () {}, text: "Submit answer"),
+                  child: Obx(() {
+                    return Opacity(
+                      opacity: controller.choosedOption.value.isEmpty ? .5 : 1,
+                      child: CustomButton(
+                        text: "Submit answer",
+                        onPressed: controller.choosedOption.value.isEmpty
+                            ? () {}
+                            : () {
+                                controller.validateQuestion();
+                              },
+                      ),
+                    );
+                  }),
                 ),
               ],
             ),
