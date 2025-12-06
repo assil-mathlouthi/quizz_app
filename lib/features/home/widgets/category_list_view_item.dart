@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:quizz_app/core/extension/color_scheme_shorthand.dart';
 import 'package:quizz_app/core/models/quizz_category_model.dart';
+import 'package:quizz_app/core/utils/app_router.dart';
 import 'package:quizz_app/core/utils/app_style.dart';
 import 'package:quizz_app/features/home/widgets/category_logo.dart';
 import 'package:quizz_app/features/home/widgets/custom_button.dart';
@@ -34,7 +37,12 @@ class CategoryListViewItem extends StatelessWidget {
                       "10 questions",
                       style: AppStyles.fontRegular14(context),
                     ),
-                    CustomButton(categoryModel: model),
+                    CustomButton(
+                      text: "Start Quiz",
+                      onPressed: () {
+                        Get.toNamed(AppRouter.quizView, arguments: model);
+                      },
+                    ),
                   ],
                 ),
               ],

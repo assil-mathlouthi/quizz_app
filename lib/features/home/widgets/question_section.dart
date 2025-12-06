@@ -22,7 +22,7 @@ class QuestionSection extends GetView<QuizController> {
       child: Column(
         children: [
           Text(quizModel.question, style: AppStyles.fontRegular16(context)),
-          20.h,
+          30.h,
           OptionsListView(quizModel: quizModel),
         ],
       ),

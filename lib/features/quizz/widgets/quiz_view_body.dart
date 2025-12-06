@@ -4,6 +4,7 @@ import 'package:quizz_app/core/extension/gap_shorthand.dart';
 import 'package:quizz_app/core/models/quizz_category_model.dart';
 import 'package:quizz_app/core/utils/app_style.dart';
 import 'package:quizz_app/features/home/widgets/category_logo.dart';
+import 'package:quizz_app/features/home/widgets/custom_button.dart';
 import 'package:quizz_app/features/home/widgets/custom_linear_progess_indicator.dart';
 import 'package:quizz_app/features/home/widgets/question_section.dart';
 import 'package:quizz_app/features/quizz/controllers/quiz_controller.dart';
@@ -17,26 +18,36 @@ class QuizViewBody extends GetView<QuizController> {
     controller.startQuiz(categoryId: category.categoryId);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: Column(
-        children: [
-          20.h,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CategoryLogo(image: category.image, color: category.color),
-            ],
-          ),
-          10.h,
-          Text(category.title, style: AppStyles.fontMedium18(context)),
-          60.h,
-          CustomLinearProgressInidicator(),
-          20.h,
-          Obx(() {
-            if (controller.isLoading.value) return CircularProgressIndicator();
-            return QuestionSection(quizModel: controller.currentQuizz);
-          }),
-        ],
-      ),
+      child: Obx(() {
+        if (controller.isLoading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return Column(
+          children: [
+            20.h,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CategoryLogo(image: category.image, color: category.color),
+              ],
+            ),
+            10.h,
+            Text(category.title, style: AppStyles.fontMedium18(context)),
+            60.h,
+            CustomLinearProgressInidicator(),
+            20.h,
+            QuestionSection(quizModel: controller.currentQuizz),
+            40.h,
+            Row(
+              children: [
+                Expanded(
+                  child: CustomButton(onPressed: () {}, text: "Submit answer"),
+                ),
+              ],
+            ),
+          ],
+        );
+      }),
     );
   }
 }
