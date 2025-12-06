@@ -14,6 +14,10 @@ class QuizController extends GetxController {
   final RxInt score = 0.obs;
   final RxBool isLoading = false.obs;
 
+
+
+  QuizModel get currentQuizz => questions[currentQuestionIndex.value];
+
   // start the quiz
   Future<void> startQuiz({required int categoryId}) async {
     isLoading.value = true;
